@@ -8,6 +8,7 @@ class Player(CircleShape):
         super().__init__(x, y, radius)
         self.rotation = 0
         self.shot_timer = 0
+        self.image = pygame.transform.scale(pygame.image.load("shipbird2.webp"), (75, 75))
     
     # in the player class
     def triangle(self):
@@ -20,6 +21,9 @@ class Player(CircleShape):
     
     def draw(self, screen):
         pygame.draw.polygon(screen, "white", self.triangle(), 2)
+        screen.blit(self.image, pygame.Rect(self.position.x -35, self.position.y-35, 10, 10))
+        
+        
 
     def rotate(self, dt):
         self.rotation += (PLAYER_TURN_SPEED * dt)
