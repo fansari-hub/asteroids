@@ -2,10 +2,10 @@ import pygame
 from constants import * 
 from circleshape import CircleShape
 
-class Asteroid(CircleShape):
-    def __init__(self, x,y, radius):
+class Shot(CircleShape):
+    def __init__(self, x,y, radius, velocity):
         super().__init__(x, y, radius)
-        self.rotation = 0
+        self.velocity = velocity
 
     def draw(self, screen):
         pygame.draw.circle(screen, (255,255,255), self.position, self.radius, 2)
@@ -13,6 +13,3 @@ class Asteroid(CircleShape):
     def update(self, dt):
         self.position += (self.velocity * dt)
     
-    def split(self):
-        self.kill()
-        
